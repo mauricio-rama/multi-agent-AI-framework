@@ -1,1 +1,14 @@
 .DS_Store
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Dependencies
+node_modules/
+
+# Local files
+.DS_Store

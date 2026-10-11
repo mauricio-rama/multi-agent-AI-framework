@@ -11,21 +11,21 @@
 <body>
   <main class="app-shell">
     <header class="page-header">
-      <div class="brand-mark" aria-hidden="true">✦</div>
+      <div class="brand-mark" aria-hidden="true">✳</div>
       <div>
-        <p class="eyebrow">TU ESPACIO DE APRENDIZAJE</p>
         <h1>Diario de Estudio</h1>
+        <p class="header-note">Un registro para avanzar un poco cada día.</p>
       </div>
     </header>
 
     <section class="streak-card" aria-labelledby="streak-title">
-      <div>
-        <p class="eyebrow">POCO A POCO, DÍA A DÍA</p>
-        <h2 id="streak-title">Tu racha actual</h2>
-        <p class="streak-caption">Cada sesión cuenta. Sigue así.</p>
+      <div class="streak-copy">
+        <p class="streak-label">Tu constancia</p>
+        <h2 id="streak-title">Racha actual</h2>
+        <p class="streak-caption">Cada día que vuelves, cuenta.</p>
       </div>
       <div class="streak-metrics" aria-live="polite">
-        <div class="streak-count">
+        <div class="streak-count" role="group" aria-label="Racha actual">
           <span class="flame" aria-hidden="true">🔥</span>
           <span id="streak-value">0</span>
           <span class="day-label" id="streak-days">días</span>
@@ -37,13 +37,29 @@
       </div>
     </section>
 
+    <div class="period-summaries">
+      <section class="period-summary" aria-labelledby="weekly-title" aria-live="polite">
+        <span class="weekly-icon" aria-hidden="true">◷</span>
+        <div>
+          <p class="period-label">Tiempo de estudio</p>
+          <h2 id="weekly-title">Esta semana <span id="weekly-minutes">0</span> min</h2>
+        </div>
+      </section>
+      <section class="period-summary" aria-labelledby="monthly-title" aria-live="polite">
+        <span class="weekly-icon" aria-hidden="true">▦</span>
+        <div>
+          <p class="period-label">Días con estudio</p>
+          <h2 id="monthly-title">Este mes <span id="monthly-days">0</span> días</h2>
+        </div>
+      </section>
+    </div>
+
     <div class="content-grid">
       <section class="panel form-panel" aria-labelledby="form-title">
         <div class="section-heading">
-          <span class="heading-icon" aria-hidden="true">＋</span>
           <div>
-            <p class="eyebrow">UN NUEVO PASO</p>
-            <h2 id="form-title">Registrar sesión</h2>
+            <h2 id="form-title">Añadir una sesión</h2>
+            <p>Guarda lo que has aprendido.</p>
           </div>
         </div>
         <form id="session-form">
@@ -59,16 +75,15 @@
             <span>min</span>
           </div>
 
-          <button type="submit">Guardar sesión <span aria-hidden="true">→</span></button>
+          <button type="submit">Guardar sesión</button>
         </form>
       </section>
 
       <section class="panel history-panel" aria-labelledby="history-title">
         <div class="section-heading history-heading">
-          <span class="heading-icon list-icon" aria-hidden="true">▤</span>
           <div>
-            <p class="eyebrow">TU CAMINO</p>
-            <h2 id="history-title">Sesiones</h2>
+            <h2 id="history-title">Sesiones recientes</h2>
+            <p>Todo lo que ya has avanzado.</p>
           </div>
           <span class="session-count" id="session-count">0</span>
         </div>
@@ -76,7 +91,7 @@
         <p class="empty-state" id="empty-state">Todavía no hay sesiones.<br>¡Registra la primera!</p>
       </section>
     </div>
-    <footer>Un pequeño avance cada día hace una gran diferencia.</footer>
+    <footer>Un poco aprendido también es progreso.</footer>
   </main>
 </body>
 </html>

@@ -24,6 +24,8 @@ Date("AAAA-MM-DD")`: se interpretan en UTC y desplazan el día.
 - Varias sesiones el mismo día cuentan como un solo día. Las fechas futuras no suman.
 - La mejor racha se calcula desde las sesiones guardadas: cuenta días únicos consecutivos
   en fechas locales, excluyendo fechas futuras. No se guarda un récord separado.
+- El total semanal suma minutos desde el lunes local hasta hoy; no incluye sesiones futuras.
+- El total mensual cuenta fechas locales únicas del mes actual y excluye fechas futuras.
 ## Forma de trabajar
 - Haz solo lo que se pide: no añadas funcionalidades por tu cuenta.
 - Cambios pequeños y enfocados; no reescribas lo que ya funciona.

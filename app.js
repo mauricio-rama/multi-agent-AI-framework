@@ -11,6 +11,8 @@ const streakValue = document.querySelector('#streak-value');
 const streakDays = document.querySelector('#streak-days');
 const bestStreakValue = document.querySelector('#best-streak-value');
 const bestStreakDays = document.querySelector('#best-streak-days');
+const weeklyMinutes = document.querySelector('#weekly-minutes');
+const monthlyDays = document.querySelector('#monthly-days');
 
 function getLocalDate(date = new Date()) {
   const year = date.getFullYear();
@@ -88,6 +90,8 @@ function renderSessions() {
   sessionCount.textContent = String(sessions.length);
   emptyState.hidden = sessions.length > 0;
   updateStreak();
+  updateWeeklyMinutes();
+  updateMonthlyDays();
 }
 
 function updateStreak() {
@@ -138,6 +142,35 @@ function addLocalDays(dateString, days) {
   const date = new Date(year, month - 1, day);
   date.setDate(date.getDate() + days);
   return getLocalDate(date);
+}
+
+function updateWeeklyMinutes() {
+  const today = new Date();
+  const daysSinceMonday = (today.getDay() + 6) % 7;
+  today.setDate(today.getDate() - daysSinceMonday);
+  const weekStart = getLocalDate(today);
+  const todayString = getLocalDate();
+
+  const total = sessions.reduce((sum, session) => {
+    if (session.date >= weekStart && session.date <= todayString) {
+      return sum + Number(session.minutes);
+    }
+    return sum;
+  }, 0);
+
+  weeklyMinutes.textContent = String(total);
+}
+
+function updateMonthlyDays() {
+  const today = getLocalDate();
+  const currentMonth = today.slice(0, 7);
+  const studiedDays = new Set(
+    sessions
+      .map((session) => session.date)
+      .filter((date) => date.startsWith(currentMonth) && date <= today)
+  );
+
+  monthlyDays.textContent = String(studiedDays.size);
 }
 
 dateInput.value = getLocalDate();
